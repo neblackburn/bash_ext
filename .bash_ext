@@ -1,0 +1,16 @@
+# Neal: When working with CodeIgniter I'm usually in the applications folder.
+# This function will allow you to call vmod from $ and it will open up each
+# correspoding file from the CI architechure (MVC).
+# Example: "$ vmod users" from the applications directory will open up 
+# controllers/users.php, models/users_m.php, and views/users_view.php (or views/users/....php).
+function vmod() {
+    if [ -d views/${1} ]; then
+        screen vim -p controllers/${1}.php \
+        models/${1}_m.php \
+        views/${1}/*.php
+    else
+        screen vim -p controllers/${1}.php \
+        models/${1}_m.php \
+        views/${1}_view.php
+    fi
+}
